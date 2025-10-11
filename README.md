@@ -27,31 +27,61 @@ las variables son variables normales, cada una con un numero.
 los numeros binarios es decir, 0 o 1, son en realidad n%2, donde n=ElNumero.
 
 Comandos existentes:
+
 "+" la suma, normal 
+
 "-" la resta, normal
+
 "*" la multiplicacion, normal
+
 "/" la division, normal
+
 "%" el resto de la division, normal
+
 "n=" si dos numeros son iguales
+
 "b=" si dos numeros binarios son iguales
+
 "<" menor<mayor, resultado 0 o 1
+
 ">" mayor>menor, resultado 0 o 1
+
 "<=" menor o igual
+
 ">=" mayor o igual
+
 "and"
+
 "or"
+
 "xor"
+
 "not"
+
 "var" "n1 n2 cvar :" n1:el dato a poner en la variable n2:variable a poner los datos
+
 "0>1" mover un numero de la LTA0 a LTA1
+
 "1>0" mover un numero de la LTA1 a LTA0
+
 "rm0" elimina un numero en la LTA0
+
 "rm1" elimina un numero en la LTA1
+
 "cp0" duplica un numero de en la LTA0
+
 "cp1" duplica un numero de en la LTA1
+
 "if" si el numero binario es 1 permitira ejecutar el comando posterior, si es 0 para la ejecucion de esa linea.
+
 "cc" es para refrescar sin hacer nada
 
 "script" para ejecutar un script de copa (script.copa), se indiga solo en nombre "script", automaticamente pone el ".copa"
+
 "conf" para abrir la configuracio, es guiada no es nada compleja, el resto de la configuracion esta editando el archivo copaconf.conf
+
 "exit" para salir del programa
+
+
+
+
