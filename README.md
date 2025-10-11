@@ -7,4 +7,7 @@ Este lenguaje de programacion es un experimento, no aseguro su perfecto desenpeÃ
 
 SINTAXIS:
 Es muy simple, la linea siempre se debe acabar con ":", doble punto.
-Puedes ingresar 3 tipos de datos y luego escribir el valor, "n" numero, "$" variable, ""
+Puedes ingresar 3 tipos de datos y luego escribir el valor, "n" numero, "$" variable, "c" comando son los tipos de datos
+Eje: "n1 n2 c+:" -> 1 + 2
+
+En este lenguaje se usan 
