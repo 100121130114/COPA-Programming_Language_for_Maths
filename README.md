@@ -82,6 +82,6 @@ Comandos existentes:
 
 "exit" para salir del programa
 
-
+Para configurar las cosas, edita el archivo "copaconf.conf", es muy simple los comentarios o titulo al inicio de la linea entre ";" el numero y "#" para omitir esa linea
 
 
