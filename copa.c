@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
 #include "copalib.h"
 
 int main(){
@@ -20,8 +22,12 @@ int main(){
    if(conft[c]=='#'){b=0;break;}
   }
   if(b>0){
+   if(a<15){
    conf[a]=ces(10,b,numd);
    a++;
+   }else{
+    break;
+   }
   }
   b=0;
  }
@@ -39,6 +45,7 @@ int main(){
  int lines[clt*tlt];
  int var[cv];
  //variables de procesamiento
+ int ccea=27;//cantidad de comandos existentes ahora
  int lms=99;//longuitut maxima para el nombre de el script a cargar
  bool ace=1;//alguna cosa ejecutada 
  char ent[lmte];//texto plano que se recibe
@@ -47,7 +54,7 @@ int main(){
  char arch[cmla][lmte];//arch actual
  int lau=-1;//linea de el archivo en uso
  int lrau=0;//lineas reales del archivo actual
- int combd[24][4];//comandos, base de datos [comando][0 y 1:cantidad de datos de entrada; 2 y 3:cantidad de datos de salida;]
+ int combd[ccea][4];//comandos, base de datos [comando][0 y 1:cantidad de datos de entrada; 2 y 3:cantidad de datos de salida;]
 
  //preparador de variables
  for(int a=0;a<clt*tlt;a++){
@@ -88,6 +95,10 @@ int main(){
  combd[21][0]=1;combd[21][1]=0;combd[21][2]=0;combd[21][3]=0;
  combd[22][0]=0;combd[22][1]=0;combd[22][2]=0;combd[22][3]=0;
  combd[23][0]=2;combd[23][1]=0;combd[23][2]=0;combd[23][3]=1;
+ combd[24][0]=0;combd[24][1]=0;combd[24][2]=0;combd[24][3]=0;
+ combd[25][0]=2;combd[25][1]=0;combd[25][2]=0;combd[25][3]=1;
+ combd[26][0]=1;combd[26][1]=0;combd[26][2]=0;combd[26][3]=0;
+ combd[25][0]=2;combd[25][1]=0;combd[25][2]=0;combd[25][3]=0;
 
  //definisions de interpretasio de les variables
  #define li(a,b) lines[a*tlt+b]//li[linea a usar][punto exacto de trabajo]
@@ -97,9 +108,12 @@ int main(){
  while(ace){
   ace=0;
   //zona de entradas
+  for(int a=0;a<lmte;a++){
+   ent[a]=0;
+  }
   if(ta){
    printf("C ");
-   scanf("%[^\n]%*c",ent);
+   scanf("%s",&ent);
    printf("\n");
   }
   if(!ta){
@@ -125,7 +139,7 @@ int main(){
   if((ent[0]=='s')&&((ent[1]=='c')&&((ent[2]=='r')&&((ent[3]=='i')&&(ent[4]=='p'))))){//cargado de un script de copa
    char arch_name[lms];
    printf("Nombre del archivo:");//ingresar nombre del script
-   scanf("%[^\n]%*c",arch_name);
+   scanf("%s",&arch_name);
    for(int a=0;a+4<lms;a++){
     if(arch_name[a]<' '){
      arch_name[a]='.';
@@ -159,18 +173,18 @@ int main(){
   }
   if((ent[0]=='c')&&((ent[1]=='o')&&((ent[2]=='n')&&(ent[3]=='f')))){
    //punto de trabajo
-   printf("PT0 - Punto de trabajo N*0, Anterior:%d >",pt[0]);scanf("%d",pt[0]);
-   printf("PT1 - Punto de trabajo N*1, Anterior:%d >",pt[1]);scanf("%d",pt[1]);
+   printf("PT0 - Punto de trabajo N*0, Anterior:%d >",pt[0]);scanf("%d",&pt[0]);
+   printf("PT1 - Punto de trabajo N*1, Anterior:%d >",pt[1]);scanf("%d",&pt[1]);
    //linea de trabajo
-   printf("LT0 - Linea de trabajo N*0, Anterior:%d >",lt[0]);scanf("%d",lt[0]);
-   printf("LT1 - Linea de trabajo N*1, Anterior:%d >",lt[1]);scanf("%d",lt[1]);
+   printf("LT0 - Linea de trabajo N*0, Anterior:%d >",lt[0]);scanf("%d",&lt[0]);
+   printf("LT1 - Linea de trabajo N*1, Anterior:%d >",lt[1]);scanf("%d",&lt[1]);
    //punto de vista
-   printf("Inicio de la vista de la linea 0 , Anterior:%d >",pv[0]);scanf("%d",pv[0]);
-   printf("Final de la vista de la linea 0 , Anterior:%d >",pv[1]);scanf("%d",pv[1]);
-   printf("Inicio de la vista de la linea 1 , Anterior:%d >",pv[2]);scanf("%d",pv[2]);
-   printf("Final de la vista de la linea 1 , Anterior:%d >",pv[3]);scanf("%d",pv[3]);
-   printf("Inicio de la vista de las variables , Anterior:%d >",pv[4]);scanf("%d",pv[4]);
-   printf("Final de la vista de las variables , Anterior:%d >",pv[5]);scanf("%d",pv[5]);
+   printf("Inicio de la vista de la linea 0 , Anterior:%d >",pv[0]);scanf("%d",&pv[0]);
+   printf("Final de la vista de la linea 0 , Anterior:%d >",pv[1]);scanf("%d",&pv[1]);
+   printf("Inicio de la vista de la linea 1 , Anterior:%d >",pv[2]);scanf("%d",&pv[2]);
+   printf("Final de la vista de la linea 1 , Anterior:%d >",pv[3]);scanf("%d",&pv[3]);
+   printf("Inicio de la vista de las variables , Anterior:%d >",pv[4]);scanf("%d",&pv[4]);
+   printf("Final de la vista de las variables , Anterior:%d >",pv[5]);scanf("%d",&pv[5]);
    ace=1;
    goto cont;
   }
@@ -200,11 +214,11 @@ int main(){
    td=-1;
    res=-1;
    if(ent[a]==':'){break;}//escape en el final del texto
-   if(ent[a]>' '){
+   if((ent[a]>' ')&&(ent[a]!='_')){
     
-    if((ent[a]=='n')&&((td==-1)&&(res==-1))){td=0;a++;}
+    if((ent[a]=='.')&&((td==-1)&&(res==-1))){td=0;a++;}
     if((ent[a]=='$')&&((td==-1)&&(res==-1))){td=1;a++;}
-    if((ent[a]=='c')&&((td==-1)&&(res==-1))){td=2;a++;}
+    if((ent[a]=='/')&&((td==-1)&&(res==-1))){td=2;a++;}
     
     if(((td>=0)&&(td<=1))&&(res==-1)){//procesamiento de numeros
      int lon=0;//longuitut del numero
@@ -248,6 +262,7 @@ int main(){
      if((ent[a]=='r')&&((ent[a+1]=='m')&&(ent[a+2]=='1'))){a+=3;res=18;}
      if((ent[a]=='c')&&((ent[a+1]=='p')&&(ent[a+2]=='0'))){a+=3;res=19;}
      if((ent[a]=='c')&&((ent[a+1]=='p')&&(ent[a+2]=='1'))){a+=3;res=20;}
+     if((ent[a]=='j')&&((ent[a+1]=='l')&&(ent[a+2]=='s'))){a+=3;res=27;}
      if((ent[a]=='n')&&(ent[a+1]=='=')){a+=2;res=4;}
      if((ent[a]=='b')&&(ent[a+1]=='=')){a+=2;res=5;}
      if((ent[a]=='<')&&(ent[a+1]=='=')){a+=2;res=8;}
@@ -255,13 +270,16 @@ int main(){
      if((ent[a]=='o')&&(ent[a+1]=='r')){a+=2;res=11;}
      if((ent[a]=='i')&&(ent[a+1]=='f')){a+=2;res=21;}
      if((ent[a]=='c')&&(ent[a+1]=='c')){a+=2;res=22;}
+     if((ent[a]=='n')&&(ent[a+1]=='<')){a+=2;res=6;}
+     if((ent[a]=='n')&&(ent[a+1]=='>')){a+=2;res=7;}
+     if((ent[a]=='b')&&(ent[a+1]=='<')){a+=2;res=24;}
+     if((ent[a]=='b')&&(ent[a+1]=='>')){a+=2;res=25;}
+     if((ent[a]=='j')&&(ent[a+1]=='c')){a+=2;res=26;}
      if(ent[a]=='+'){a+=1;res=0;}
      if(ent[a]=='-'){a+=1;res=1;}
      if(ent[a]=='*'){a+=1;res=2;}
      if(ent[a]=='/'){a+=1;res=3;}
      if(ent[a]=='%'){a+=1;res=23;}
-     if(ent[a]=='<'){a+=1;res=6;}
-     if(ent[a]=='>'){a+=1;res=7;}
      td=2;
     }
     //zona de ejecucion
@@ -273,16 +291,12 @@ int main(){
      ace=1;
     }
     if(td==1){//variable
-     if((res>0)&&(res<cv)){
-      li(lt[0],pt[0])=var[res];
-      pt[0]++;
-      if(pt[0]>=tlt){pt[0]=0;}
-      if(pt[0]<0){pt[0]=tlt-1;}
-      ace=1;
-     }else{
-      printf("ERROR: Numero incorecto para la variable.");
-      goto error;
-     }
+     res=res%cv;
+     li(lt[0],pt[0])=var[res];
+     pt[0]++;
+     if(pt[0]>=tlt){pt[0]=0;}
+     if(pt[0]<0){pt[0]=tlt-1;}
+     ace=1;
     }
     if(td==2){//comandos
      bool ife=0;//funcion de salida para el if
@@ -290,7 +304,7 @@ int main(){
      int d[combd[res][1]];//input de lt 1
      int e[combd[res][2]];//output de lt 0
      int f[combd[res][3]];//output de lt 1
-     if((res>=0)&&(res<24)){//detecion de que el comando existe
+     if((res>=0)&&(res<ccea)){//detecion de que el comando existe
       //buscado i recolecion de datos
       for(int b=0;b<combd[res][0];b++){
        pt[0]--;
@@ -415,12 +429,30 @@ int main(){
        }
        ace=1;
       }break;
+      case 24:{//b<
+       f[0]=(int)((bool)(c[1]%2)<(bool)(c[0]%2));
+       ace=1;
+      }break;
+      case 25:{//b>
+       f[0]=(int)((bool)(c[1]%2)>(bool)(c[0]%2));
+       ace=1;
+      }break;
+      case 26:{//jc
+       if((bool)(c[0]%2)){a=0;}
+       ace=1;
+      }break;
+      case 27:{//jls
+       if(!(ta)){
+        if((bool)(c[0]%2)){lau=c[1]%lrau;}
+       }
+       ace=1;
+      }break;
       default:{
        printf("ERROR: Comando no identificado.");
        goto error;
       }break;
      };
-     if((res>=0)&&(res<24)){//detecion de que el comando existe  
+     if((res>=0)&&(res<ccea)){//detecion de que el comando existe  
       //envio del resultado
       for(int b=0;b<combd[res][2];b++){
        li(lt[0],pt[0])=e[b];
