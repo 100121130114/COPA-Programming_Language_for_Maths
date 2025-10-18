@@ -6,17 +6,15 @@ La sintaxis es muy simple pero el concepto sobre el que se basa es algo extraño
 Este lenguaje de programacion es un experimento, no aseguro su perfecto desenpeño ni diseño, lo hice en solo 2 dias y otros 2 para retocar "script:" :).
 
 SINTAXIS:
-En modo terminal los espacios van mas o menos, pero no nuy bien, en modo script si se pueden usar sin problemas
-
 Es muy simple, la linea siempre se debe acabar con ":", doble punto.
-Puedes ingresar 3 tipos de datos y luego escribir el valor, "." numero, "$" variable, "/" comando son los tipos de datos
-Eje: ".1 .2 /+ :" -> 1 + 2
+Puedes ingresar 3 tipos de datos y luego escribir el valor, "n" numero, "$" variable, "c" comando son los tipos de datos
+Eje: "n1 n2 c+:" -> 1 + 2
 
 Las variables de convirten en el numero que almacenan.
-Eje: (la variable 12, es igual a 3) "$12 .2 /-:" -> 3 - 2
+Eje: (la variable 12, es igual a 3) "$12 n2 c-:" -> 3 - 2
 
 Puedes poner tantos comandos quieras.
-Eje: ".1 .2 /+ /1>0 .3 /-:" -> ( 1 + 2 ) - 3
+Eje: "n1 n2 c+ c1>0 n3 c-:" -> ( 1 + 2 ) - 3
 
 En este lenguaje se usan las lineas, que son como stacks en los que puedes poner datos i sacarlos, las operaciones siempre sogen los datos de la linea de trabajo 0 i el resultado en la 1.
 

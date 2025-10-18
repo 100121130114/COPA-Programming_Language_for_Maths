@@ -1,4 +1,4 @@
-//Libreria para COPA
+//Libreria para PLaM
 
 int long lvr(int long numero_base, int long numero_elevar){//ElEvAr
 					    //numero_base:numero que se multiplica sobre si mismo; numero_elevar:con el que se eleva; (numero_base^numero elevar)

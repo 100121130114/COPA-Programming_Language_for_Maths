@@ -7,7 +7,7 @@
 
 int main(){
  //extractor de la configuracion
- FILE *fconf = fopen("copaconf.conf", "r");
+ FILE *fconf = fopen("confcopa.conf", "r");
  int conf[15];
  char conft[999];
  int numd[999];
@@ -443,7 +443,8 @@ int main(){
       }break;
       case 27:{//jls
        if(!(ta)){
-        if((bool)(c[0]%2)){lau=c[1]%lrau;}
+        if((bool)(c[0]%2)){lau=(c[1]+lau-1)%lrau;}
+        ife=1;
        }
        ace=1;
       }break;
