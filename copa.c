@@ -113,7 +113,7 @@ int main(){
   }
   if(ta){
    printf("C ");
-   scanf("%s",&ent);
+   scanf("%s",ent);
    printf("\n");
   }
   if(!ta){
@@ -139,7 +139,7 @@ int main(){
   if((ent[0]=='s')&&((ent[1]=='c')&&((ent[2]=='r')&&((ent[3]=='i')&&(ent[4]=='p'))))){//cargado de un script de copa
    char arch_name[lms];
    printf("Nombre del archivo:");//ingresar nombre del script
-   scanf("%s",&arch_name);
+   scanf("%s",arch_name);
    for(int a=0;a+4<lms;a++){
     if(arch_name[a]<' '){
      arch_name[a]='.';
@@ -252,34 +252,35 @@ int main(){
     
     //detecion de los comandos
     if((td==2)&&(res==-1)){
-     if((ent[a]=='a')&&((ent[a+1]=='n')&&(ent[a+2]=='d'))){a+=3;res=10;}
-     if((ent[a]=='x')&&((ent[a+1]=='o')&&(ent[a+2]=='r'))){a+=3;res=12;}
-     if((ent[a]=='n')&&((ent[a+1]=='o')&&(ent[a+2]=='t'))){a+=3;res=13;}
-     if((ent[a]=='v')&&((ent[a+1]=='a')&&(ent[a+2]=='r'))){a+=3;res=14;}
-     if((ent[a]=='0')&&((ent[a+1]=='>')&&(ent[a+2]=='1'))){a+=3;res=15;}
-     if((ent[a]=='1')&&((ent[a+1]=='>')&&(ent[a+2]=='0'))){a+=3;res=16;}
-     if((ent[a]=='r')&&((ent[a+1]=='m')&&(ent[a+2]=='0'))){a+=3;res=17;}
-     if((ent[a]=='r')&&((ent[a+1]=='m')&&(ent[a+2]=='1'))){a+=3;res=18;}
-     if((ent[a]=='c')&&((ent[a+1]=='p')&&(ent[a+2]=='0'))){a+=3;res=19;}
-     if((ent[a]=='c')&&((ent[a+1]=='p')&&(ent[a+2]=='1'))){a+=3;res=20;}
-     if((ent[a]=='j')&&((ent[a+1]=='l')&&(ent[a+2]=='s'))){a+=3;res=27;}
-     if((ent[a]=='n')&&(ent[a+1]=='=')){a+=2;res=4;}
-     if((ent[a]=='b')&&(ent[a+1]=='=')){a+=2;res=5;}
-     if((ent[a]=='<')&&(ent[a+1]=='=')){a+=2;res=8;}
-     if((ent[a]=='>')&&(ent[a+1]=='=')){a+=2;res=9;}
-     if((ent[a]=='o')&&(ent[a+1]=='r')){a+=2;res=11;}
-     if((ent[a]=='i')&&(ent[a+1]=='f')){a+=2;res=21;}
-     if((ent[a]=='c')&&(ent[a+1]=='c')){a+=2;res=22;}
-     if((ent[a]=='n')&&(ent[a+1]=='<')){a+=2;res=6;}
-     if((ent[a]=='n')&&(ent[a+1]=='>')){a+=2;res=7;}
-     if((ent[a]=='b')&&(ent[a+1]=='<')){a+=2;res=24;}
-     if((ent[a]=='b')&&(ent[a+1]=='>')){a+=2;res=25;}
-     if((ent[a]=='j')&&(ent[a+1]=='c')){a+=2;res=26;}
-     if(ent[a]=='+'){a+=1;res=0;}
-     if(ent[a]=='-'){a+=1;res=1;}
-     if(ent[a]=='*'){a+=1;res=2;}
-     if(ent[a]=='/'){a+=1;res=3;}
-     if(ent[a]=='%'){a+=1;res=23;}
+     res=-1;
+     if((ent[a]=='a')&&((ent[a+1]=='n')&&((ent[a+2]=='d')&&(res==-1)))){a+=3;res=10;}
+     if((ent[a]=='x')&&((ent[a+1]=='o')&&((ent[a+2]=='r')&&(res==-1)))){a+=3;res=12;}
+     if((ent[a]=='n')&&((ent[a+1]=='o')&&((ent[a+2]=='t')&&(res==-1)))){a+=3;res=13;}
+     if((ent[a]=='v')&&((ent[a+1]=='a')&&((ent[a+2]=='r')&&(res==-1)))){a+=3;res=14;}
+     if((ent[a]=='0')&&((ent[a+1]=='>')&&((ent[a+2]=='1')&&(res==-1)))){a+=3;res=15;}
+     if((ent[a]=='1')&&((ent[a+1]=='>')&&((ent[a+2]=='0')&&(res==-1)))){a+=3;res=16;}
+     if((ent[a]=='r')&&((ent[a+1]=='m')&&((ent[a+2]=='0')&&(res==-1)))){a+=3;res=17;}
+     if((ent[a]=='r')&&((ent[a+1]=='m')&&((ent[a+2]=='1')&&(res==-1)))){a+=3;res=18;}
+     if((ent[a]=='c')&&((ent[a+1]=='p')&&((ent[a+2]=='0')&&(res==-1)))){a+=3;res=19;}
+     if((ent[a]=='c')&&((ent[a+1]=='p')&&((ent[a+2]=='1')&&(res==-1)))){a+=3;res=20;}
+     if((ent[a]=='j')&&((ent[a+1]=='l')&&((ent[a+2]=='s')&&(res==-1)))){a+=3;res=27;}
+     if((ent[a]=='n')&&((ent[a+1]=='=')&&(res==-1))){a+=2;res=4;}
+     if((ent[a]=='b')&&((ent[a+1]=='=')&&(res==-1))){a+=2;res=5;}
+     if((ent[a]=='<')&&((ent[a+1]=='=')&&(res==-1))){a+=2;res=8;}
+     if((ent[a]=='>')&&((ent[a+1]=='=')&&(res==-1))){a+=2;res=9;}
+     if((ent[a]=='o')&&((ent[a+1]=='r')&&(res==-1))){a+=2;res=11;}
+     if((ent[a]=='i')&&((ent[a+1]=='f')&&(res==-1))){a+=2;res=21;}
+     if((ent[a]=='c')&&((ent[a+1]=='c')&&(res==-1))){a+=2;res=22;}
+     if((ent[a]=='n')&&((ent[a+1]=='<')&&(res==-1))){a+=2;res=6;}
+     if((ent[a]=='n')&&((ent[a+1]=='>')&&(res==-1))){a+=2;res=7;}
+     if((ent[a]=='b')&&((ent[a+1]=='<')&&(res==-1))){a+=2;res=24;}
+     if((ent[a]=='b')&&((ent[a+1]=='>')&&(res==-1))){a+=2;res=25;}
+     if((ent[a]=='j')&&((ent[a+1]=='c')&&(res==-1))){a+=2;res=26;}
+     if((ent[a]=='+')&&(res==-1)){a+=1;res=0;}
+     if((ent[a]=='-')&&(res==-1)){a+=1;res=1;}
+     if((ent[a]=='*')&&(res==-1)){a+=1;res=2;}
+     if((ent[a]=='/')&&(res==-1)){a+=1;res=3;}
+     if((ent[a]=='%')&&(res==-1)){a+=1;res=23;}
      td=2;
     }
     //zona de ejecucion
