@@ -1,8 +1,8 @@
-.1/rm0:Este es un comentario, los espacios solo son acesibles en scripts, no en terminal mode
-.1/rm0:Ejemplo de numeros en LTA0 -> .0 .1 .2 .3 .4 .5 .0 .3 : esto singnifica que parara al tetectar un numero <= a 3, parara en .3 :)
-.0_/var:defino el numero que tiene que ser <= para que pare
-.1_/var:defino el añadido a cada entrada
-/cp0_/0>1_$1_/+_/1>0_$0_/n>_/1>0_/jc:Este codigo recore todo la LTA0 poniendo los numeros en LTA1, pero parara al detectar un numero <= a el numero de la variable 0, definida al inicio
+.1/rm0:
+.1/rm0:
+.0_/var:
+.1_/var:
+/cp0_/0>1_$1_/+_/1>0_$0_/n>_/1>0_/jc:
 /1>0:
-.0_.0_/var:Esto limpia la variable 0
-.0_.1_/var:Esto limpia la variable 1
+.0_.0_/var:
+.0_.1_/var:

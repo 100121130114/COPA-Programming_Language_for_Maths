@@ -147,6 +147,9 @@ int main(){
      arch_name[a+2]='o';
      arch_name[a+3]='p';
      arch_name[a+4]='a';
+     for(int b=a+5;b<lms;b++){
+      arch_name[b]=0;
+     }
      break;
     }
    }
